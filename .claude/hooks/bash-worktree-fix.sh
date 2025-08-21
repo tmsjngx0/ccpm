@@ -18,15 +18,21 @@ get_worktree_path() {
     
     while [ "$check_dir" != "/" ]; do
         if [ -f "$check_dir/.git" ]; then
-            # Found potential worktree marker
+            # Found potential worktree or submodule marker
             gitdir_content="$(cat "$check_dir/.git" 2>/dev/null || true)"
             
-            # Check if it starts with "gitdir:"
+            # Check if it's a worktree (not a submodule)
             case "$gitdir_content" in
-                gitdir:*)
+                gitdir:*worktrees/*)
+                    # This is a true worktree
                     debug_log "Found worktree at: $check_dir"
                     echo "$check_dir"
                     return 0
+                    ;;
+                gitdir:*)
+                    # This is a submodule, not a worktree
+                    debug_log "Found submodule (not worktree) at: $check_dir"
+                    return 1
                     ;;
             esac
         elif [ -d "$check_dir/.git" ]; then
@@ -45,17 +51,19 @@ get_worktree_path() {
 should_skip_command() {
     cmd="$1"
     
-    # Skip if command already has cd at the start
-    case "$cmd" in
-        cd\ *|cd${TAB}*)
-            debug_log "Skipping: command already has cd"
-            return 0
-            ;;
-    esac
+    # Tokenize to get the first word
+    set -- $cmd
+    first="$1"
     
-    # Skip certain commands that don't need directory context
-    case "$cmd" in
-        pwd*|echo*|export*|alias*|source*|.*)
+    # Skip if command already starts with cd
+    if [ "$first" = "cd" ]; then
+        debug_log "Skipping: command already has cd"
+        return 0
+    fi
+    
+    # Skip certain built-in commands that don't need directory context
+    case "$first" in
+        pwd|echo|export|alias|source|.)
             debug_log "Skipping: matches skip pattern"
             return 0
             ;;
@@ -77,27 +85,33 @@ inject_prefix() {
     worktree_path="$1"
     command="$2"
     
-    # Handle background commands - check if ends with " &"
-    case "$command" in
-        *" &")
-            # Remove the " &" suffix, add prefix, then restore it
-            cmd_without_bg="${command% &}"
-            echo "cd $worktree_path && $cmd_without_bg &"
-            ;;
-        *" &"*)
-            # Has & but not at the end - just prefix normally
-            echo "cd $worktree_path && $command"
+    # Trim trailing spaces and detect backgrounding
+    trimmed="$command"
+    while [ "${trimmed% }" != "$trimmed" ]; do
+        trimmed="${trimmed% }"
+    done
+    
+    case "$trimmed" in
+        *"&")
+            # Remove the & suffix, add prefix with quoted path, then restore it
+            cmd_without_bg="${trimmed%&}"
+            # Trim any trailing spaces after removing &
+            while [ "${cmd_without_bg% }" != "$cmd_without_bg" ]; do
+                cmd_without_bg="${cmd_without_bg% }"
+            done
+            echo "cd \"$worktree_path\" && $cmd_without_bg &"
             ;;
         *)
-            # Normal command
-            echo "cd $worktree_path && $command"
+            # Normal command with quoted path
+            echo "cd \"$worktree_path\" && $command"
             ;;
     esac
 }
 
 # Main execution
 main() {
-    original_command="$1"
+    # Capture all arguments as the command
+    original_command="$*"
     
     debug_log "Processing command: $original_command"
     

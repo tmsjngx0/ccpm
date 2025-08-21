@@ -76,30 +76,26 @@ The script handles:
 
 If the hook isn't working:
 
-1. Check if it's executable:
+1. **Verify the hook is executable:**
+   ```bash
+   chmod +x .claude/hooks/bash-worktree-fix.sh
+   ```
 
-```bash
-chmod +x .claude/hooks/bash-worktree-fix.sh
-```
+2. **Enable debug logging to see what's happening:**
+   ```bash
+   export CLAUDE_HOOK_DEBUG=true
+   ```
 
-2. Enable debug logging:
+3. **Test the hook manually with a sample command:**
+   ```bash
+   cd /path/to/worktree
+   .claude/hooks/bash-worktree-fix.sh "npm test"
+   ```
 
-```bash
-export CLAUDE_HOOK_DEBUG=true
-```
-
-3. Test manually:
-
-```bash
-cd /your/worktree
-.claude/hooks/bash-worktree-fix.sh "your command"
-```
-
-4. Verify config.json is properly formatted:
-
-```bash
-cat .claude/hooks/config.json | jq .
-```
+4. **Check that your settings.json is valid JSON:**
+   ```bash
+   cat .claude/settings.json | python -m json.tool
+   ```
 
 ### Integration with Claude
 
@@ -125,9 +121,9 @@ npm run build
 **Hook transforms to:**
 
 ```bash
-cd /Users/james/git/epic-public-website && npm install
-cd /Users/james/git/epic-public-website && git status
-cd /Users/james/git/epic-public-website && npm run build
+cd /path/to/my/project/epic-feature && npm install
+cd /path/to/my/project/epic-feature && git status
+cd /path/to/my/project/epic-feature && npm run build
 ```
 
 **Without the agent knowing or caring about the worktree context!**
