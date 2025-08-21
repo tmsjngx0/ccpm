@@ -81,7 +81,7 @@ get_worktree_path() {
             return 1
         fi
 
-        check_dir=$(dirname -- "${check_dir}")
+        check_dir=$(dirname "${check_dir}")
     done
 
     debug_log "No git repository found"
