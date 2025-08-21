@@ -1,7 +1,8 @@
 # Claude Code PM
 
-[![Claude Code](https://img.shields.io/badge/+-Claude%20Code-d97757)](https://github.com/automazeio/ccpm/blob/main/README.md)
+[![Automaze](https://img.shields.io/badge/By-automaze.io-4b3baf)](https://automaze.io)
 &nbsp;
+[![Claude Code](https://img.shields.io/badge/+-Claude%20Code-d97757)](https://github.com/automazeio/ccpm/blob/main/README.md)
 [![GitHub Issues](https://img.shields.io/badge/+-GitHub%20Issues-1f2328)](https://github.com/automazeio/ccpm)
 &nbsp;
 [![MIT License](https://img.shields.io/badge/License-MIT-28a745)](https://github.com/automazeio/ccpm/blob/main/LICENSE)
@@ -10,7 +11,7 @@
 &nbsp;
 [![Star this repo](https://img.shields.io/badge/★-Star%20this%20repo-e7b10b)](https://github.com/automazeio/ccpm)
 
-### Claude Code workflow to ship ~~faster~~ _better_ using spec-driven development, GitHub issues, and mutiple AI agents running in parallel.
+### Claude Code workflow to ship ~~faster~~ _better_ using spec-driven development, GitHub issues, Git worktrees, and mutiple AI agents running in parallel.
 
 Stop losing context. Stop blocking on tasks. Stop shipping bugs. This battle-tested system turns PRDs into epics, epics into GitHub issues, and issues into production code – with full traceability at every step.
 
@@ -343,10 +344,10 @@ Focus on building, not managing. Intelligent prioritization, automatic context l
 ## Proven Results
 
 Teams using this system report:
-- **89% less time** lost to context switching
-- **5-8 parallel tasks** vs 1 previously
-- **75% reduction** in bug rates
-- **3x faster** feature delivery
+- **89% less time** lost to context switching – you'll use `/compact` and `/clear` a LOT less
+- **5-8 parallel tasks** vs 1 previously – editing/testing multiple files at the same time
+- **75% reduction** in bug rates – due to the breaking down features into detailed tasks 
+- **Up to 3x faster** feature delivery – based on feature size and complexity
 
 ## Example Flow
 
@@ -385,10 +386,8 @@ Teams using this system report:
    ```bash
    cd path/to/your/project/
    git clone https://github.com/automazeio/ccpm.git .
-   cd ccpm/
    ```
-
-   > If you already have a `.claude` directory, clone this repository to a different directory and copy the contents of the cloned `.claude` directory to your project's `.claude` directory.
+   > ⚠️ **IMPORTANT**: If you already have a `.claude` directory, clone this repository to a different directory and copy the contents of the cloned `.claude` directory to your project's `.claude` directory.
 
 2. **Initialize the PM system**:
    ```bash
