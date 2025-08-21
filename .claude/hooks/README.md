@@ -6,7 +6,7 @@ This hook automatically fixes the Bash tool's directory reset issue when working
 
 ### Problem
 
-The Bash tool resets to the main project directory after every command, making it impossible to work in worktrees without manually prefixing every command with `cd /path/to/worktree && `.
+The Bash tool resets to the main project directory after every command, making it impossible to work in worktrees without manually prefixing every command with `cd /path/to/worktree &&`.
 
 ### Solution
 
@@ -51,7 +51,7 @@ export CLAUDE_HOOK_DEBUG=true
 # Test in worktree (should inject cd)
 cd /path/to/worktree
 .claude/hooks/bash-worktree-fix.sh "npm install"
-# Output: cd /path/to/worktree && npm install
+# Output: cd "/path/to/worktree" && npm install
 ```
 
 ### Advanced Features
