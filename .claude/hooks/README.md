@@ -28,7 +28,7 @@ Edit `.claude/hooks/config.json`:
     "pre-tool-use": {
       "Bash": {
         "enabled": true,
-        "script": ".claude/hooks/bash-worktree-fix-advanced.sh",
+        "script": ".claude/hooks/bash-worktree-fix.sh",
         "apply_to_subagents": true
       }
     }
@@ -79,7 +79,7 @@ If the hook isn't working:
 1. Check if it's executable:
 
 ```bash
-chmod +x .claude/hooks/bash-worktree-fix-advanced.sh
+chmod +x .claude/hooks/bash-worktree-fix.sh
 ```
 
 2. Enable debug logging:
@@ -92,7 +92,7 @@ export CLAUDE_HOOK_DEBUG=true
 
 ```bash
 cd /your/worktree
-.claude/hooks/bash-worktree-fix-advanced.sh "your command"
+.claude/hooks/bash-worktree-fix.sh "your command"
 ```
 
 4. Verify config.json is properly formatted:
