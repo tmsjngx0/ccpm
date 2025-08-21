@@ -20,7 +20,8 @@ The pre-tool-use hook automatically detects when you're in a worktree and inject
 
 ### Configuration
 
-Edit `.claude/hooks/config.json`:
+Add to your `.claude/settings.json`:
+
 
 ```json
 {
