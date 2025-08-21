@@ -13,7 +13,8 @@ This command updates the project context documentation in `.claude/context/` to 
 
 ## Preflight Checklist
 
-Before proceeding, complete these validation steps:
+Before proceeding, complete these validation steps.
+Do not bother the user with preflight checks progress ("I'm not going to ..."). Just do them and move on.
 
 ### 1. Context Validation
 - Run: `ls -la .claude/context/ 2>/dev/null`
@@ -68,7 +69,7 @@ For each context file, determine if updates are needed:
   - Update: New libraries, upgraded versions, new dev tools
   - Include security updates or breaking changes
 
-#### `system-patterns.md` - **Update if Architecture Changed**  
+#### `system-patterns.md` - **Update if Architecture Changed**
   - Check: New design patterns, architectural decisions
   - Update: New patterns adopted, refactoring done
   - Only update for significant architectural changes
@@ -139,7 +140,7 @@ After updating each file:
 
 **Common Issues:**
 - **File locked:** "❌ Cannot update {file} - may be open in editor"
-- **Permission denied:** "❌ Cannot write to {file} - check permissions"  
+- **Permission denied:** "❌ Cannot write to {file} - check permissions"
 - **Corrupted file:** "⚠️ {file} appears corrupted - skipping update"
 - **Disk space:** "❌ Insufficient disk space for updates"
 
@@ -165,15 +166,15 @@ Provide detailed summary of updates:
   ✅ progress.md - Updated recent commits, current status
   ✅ tech-context.md - Added 3 new dependencies
   ✅ project-structure.md - Noted new /utils directory
-  
+
 ⏭️ Skipped Files (no changes):
   - project-brief.md (last updated: 5 days ago)
   - project-vision.md (last updated: 2 weeks ago)
   - system-patterns.md (last updated: 3 days ago)
-  
+
 ⚠️ Issues:
   {any warnings or errors}
-  
+
 ⏰ Last Update: {timestamp}
 🔄 Next: Run this command regularly to keep context current
 💡 Tip: Major changes? Consider running /context:create for full refresh
@@ -190,7 +191,7 @@ Provide detailed summary of updates:
 ### 8. Performance Optimization
 
 For large projects:
-- Process files in parallel when possible  
+- Process files in parallel when possible
 - Show progress: "Updating context files... {current}/{total}"
 - Skip very large files with warning
 - Use git diff to quickly identify changed areas

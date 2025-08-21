@@ -18,7 +18,8 @@ Push local updates as GitHub issue comments for transparent audit trail.
 
 ## Preflight Checklist
 
-Before proceeding, complete these validation steps:
+Before proceeding, complete these validation steps.
+Do not bother the user with preflight checks progress ("I'm not going to ..."). Just do them and move on.
 
 1. **GitHub Authentication:**
    - Run: `gh auth status`
@@ -94,7 +95,7 @@ Create comprehensive update comment:
 
 ### 📊 Acceptance Criteria Status
 - ✅ {completed_criterion}
-- 🔄 {in_progress_criterion}  
+- 🔄 {in_progress_criterion}
 - ⏸️ {blocked_criterion}
 - □ {pending_criterion}
 
@@ -137,7 +138,7 @@ If task is complete, update all relevant frontmatter:
 **Task file frontmatter**:
 ```yaml
 ---
-name: [Task Title]  
+name: [Task Title]
 status: closed
 created: [existing date]
 updated: [current date/time]
@@ -204,12 +205,12 @@ This task is ready for review and can be closed.
    Progress items: {progress_count}
    Technical notes: {notes_count}
    Commits referenced: {commit_count}
-   
+
 📊 Current status:
    Task completion: {task_completion}%
    Epic progress: {epic_progress}%
    Completed criteria: {completed}/{total}
-   
+
 🔗 View update: gh issue view #$ARGUMENTS --comments
 ```
 

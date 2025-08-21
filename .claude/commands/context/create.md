@@ -13,7 +13,8 @@ This command creates the initial project context documentation in `.claude/conte
 
 ## Preflight Checklist
 
-Before proceeding, complete these validation steps:
+Before proceeding, complete these validation steps.
+Do not bother the user with preflight checks progress ("I'm not going to ..."). Just do them and move on.
 
 ### 1. Context Directory Check
 - Run: `ls -la .claude/context/ 2>/dev/null`
@@ -127,7 +128,7 @@ Provide comprehensive summary:
   - Language: {primary_language}
   - Git Status: {clean/changes}
   - Dependencies: {count} packages
-  
+
 📝 File Details:
   ✅ progress.md ({lines} lines) - Current status and recent work
   ✅ project-structure.md ({lines} lines) - Directory organization

@@ -8,7 +8,8 @@ This command loads essential context for a new agent session by reading the proj
 
 ## Preflight Checklist
 
-Before proceeding, complete these validation steps:
+Before proceeding, complete these validation steps.
+Do not bother the user with preflight checks progress ("I'm not going to ..."). Just do them and move on.
 
 ### 1. Context Availability Check
 - Run: `ls -la .claude/context/ 2>/dev/null`
@@ -92,29 +93,29 @@ Provide comprehensive summary after priming:
 
 📖 Loaded Context Files:
   ✅ Essential: {count}/3 files
-  ✅ Current State: {count}/2 files  
+  ✅ Current State: {count}/2 files
   ✅ Deep Context: {count}/4 files
-  
+
 🔍 Project Understanding:
   - Name: {project_name}
-  - Type: {project_type} 
+  - Type: {project_type}
   - Language: {primary_language}
   - Status: {current_status from progress.md}
   - Branch: {git_branch}
-  
+
 📊 Key Metrics:
   - Last Updated: {most_recent_update}
   - Context Version: {version}
   - Files Loaded: {success_count}/{total_count}
-  
+
 ⚠️ Warnings:
   {list any missing files or issues}
-  
+
 🎯 Ready State:
   ✅ Project context loaded
   ✅ Current status understood
   ✅ Ready for development work
-  
+
 💡 Project Summary:
   {2-3 sentence summary of what the project is and current state}
 ```
@@ -124,7 +125,7 @@ Provide comprehensive summary after priming:
 If some files fail to load:
 - Continue with available context
 - Clearly note what's missing
-- Suggest remediation: 
+- Suggest remediation:
   - "Missing technical context - run /context:create to rebuild"
   - "Progress file corrupted - run /context:update to refresh"
 

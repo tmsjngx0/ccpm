@@ -18,7 +18,8 @@ Break epic into concrete, actionable tasks.
 
 ## Preflight Checklist
 
-Before proceeding, complete these validation steps:
+Before proceeding, complete these validation steps.
+Do not bother the user with preflight checks progress ("I'm not going to ..."). Just do them and move on.
 
 1. **Verify epic exists:**
    - Check if `.claude/epics/$ARGUMENTS/epic.md` exists
@@ -64,17 +65,17 @@ Task:
   subagent_type: "general-purpose"
   prompt: |
     Create task files for epic: $ARGUMENTS
-    
+
     Tasks to create:
     - {list of 3-4 tasks for this batch}
-    
+
     For each task:
     1. Create file: .claude/epics/$ARGUMENTS/{number}.md
     2. Use exact format with frontmatter and all sections
     3. Follow task breakdown from epic
     4. Set parallel/depends_on fields appropriately
     5. Number sequentially (001.md, 002.md, etc.)
-    
+
     Return: List of files created
 ```
 
@@ -158,7 +159,7 @@ Choose based on task count and complexity:
 
 **Small Epic (< 5 tasks)**: Create sequentially for simplicity
 
-**Medium Epic (5-10 tasks)**: 
+**Medium Epic (5-10 tasks)**:
 - Batch into 2-3 groups
 - Spawn agents for each batch
 - Consolidate results

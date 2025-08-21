@@ -18,7 +18,8 @@ Launch brainstorming for new product requirement document.
 
 ## Preflight Checklist
 
-Before proceeding, complete these validation steps:
+Before proceeding, complete these validation steps.
+Do not bother the user with preflight checks progress ("I'm not going to ..."). Just do them and move on.
 
 ### Input Validation
 1. **Validate feature name format:**
