@@ -31,15 +31,61 @@ Do not bother the user with preflight checks progress ("I'm not going to ..."). 
 - Check for test files: `find . -name "*_test.go" 2>/dev/null | head -5`
 - Check go.mod exists: `test -f go.mod && echo "Go module found"`
 
-**Other Languages:**
-- Ruby: Check for RSpec: `find . -name ".rspec" -o -name "spec_helper.rb" 2>/dev/null`
-- Java: Check for JUnit: `find . -name "pom.xml" -exec grep -l "junit" {} \; 2>/dev/null`
+**PHP:**
+- Check for PHPUnit: `find . -name "phpunit.xml" -o -name "phpunit.xml.dist" -o -name "composer.json" -exec grep -l "phpunit" {} \; 2>/dev/null`
+- Check for Pest: `find . -name "composer.json" -exec grep -l "pestphp/pest" {} \; 2>/dev/null`
+- Look for test directories: `find . -type d \( -name "tests" -o -name "test" \) -maxdepth 3 2>/dev/null`
+
+**C#/.NET:**
+- Check for MSTest/NUnit/xUnit: `find . -name "*.csproj" -exec grep -l -E "Microsoft\.NET\.Test|NUnit|xunit" {} \; 2>/dev/null`
+- Check for test projects: `find . -name "*.csproj" -exec grep -l "<IsTestProject>true</IsTestProject>" {} \; 2>/dev/null`
+- Look for solution files: `find . -name "*.sln" 2>/dev/null`
+
+**Java:**
+- Check for JUnit (Maven): `find . -name "pom.xml" -exec grep -l "junit" {} \; 2>/dev/null`
+- Check for JUnit (Gradle): `find . -name "build.gradle" -o -name "build.gradle.kts" -exec grep -l -E "junit|testImplementation" {} \; 2>/dev/null`
+- Look for test directories: `find . -path "*/src/test/java" -type d 2>/dev/null`
+
+**Kotlin:**
+- Check for Kotlin tests: `find . -name "build.gradle.kts" -exec grep -l -E "kotlin.*test|spek" {} \; 2>/dev/null`
+- Look for Kotlin test files: `find . -name "*Test.kt" -o -name "*Spec.kt" 2>/dev/null | head -5`
+
+**Swift:**
+- Check for XCTest: `find . -name "Package.swift" -exec grep -l "XCTest" {} \; 2>/dev/null`
+- Check for Xcode test targets: `find . -name "*.xcodeproj" -o -name "*.xcworkspace" 2>/dev/null`
+- Look for test files: `find . -name "*Test.swift" -o -name "*Tests.swift" 2>/dev/null | head -5`
+
+**Dart/Flutter:**
+- Check for Flutter tests: `test -f pubspec.yaml && grep -q "flutter_test" pubspec.yaml && echo "Flutter test found"`
+- Look for test files: `find . -name "*_test.dart" 2>/dev/null | head -5`
+- Check for test directory: `test -d test && echo "Test directory found"`
+
+**C/C++:**
+- Check for GoogleTest: `find . -name "CMakeLists.txt" -exec grep -l -E "gtest|GTest" {} \; 2>/dev/null`
+- Check for Catch2: `find . -name "CMakeLists.txt" -exec grep -l "Catch2" {} \; 2>/dev/null`
+- Look for test files: `find . -name "*test.cpp" -o -name "*test.c" -o -name "test_*.cpp" 2>/dev/null | head -5`
+
+**Ruby:**
+- Check for RSpec: `find . -name ".rspec" -o -name "spec_helper.rb" 2>/dev/null`
+- Check for Minitest: `find . -name "Gemfile" -exec grep -l "minitest" {} \; 2>/dev/null`
+- Look for test files: `find . -name "*_spec.rb" -o -name "*_test.rb" 2>/dev/null | head -5`
 
 ### 2. Test Environment Validation
 
 If no test framework detected:
 - Tell user: "⚠️ No test framework detected. Please specify your testing setup."
-- Ask: "What test command should I use? (e.g., npm test, pytest, cargo test)"
+- Ask: "What test command should I use? Examples:
+  - Node.js: npm test, pnpm test, yarn test
+  - Python: pytest, python -m unittest, poetry run pytest
+  - PHP: ./vendor/bin/phpunit, composer test
+  - Java: mvn test, ./gradlew test
+  - C#/.NET: dotnet test
+  - Swift: swift test
+  - Dart/Flutter: flutter test
+  - C/C++: ctest, make test
+  - Ruby: bundle exec rspec, rake test
+  - Go: go test ./...
+  - Rust: cargo test"
 - Store response for future use
 
 ### 3. Dependency Check
@@ -47,11 +93,27 @@ If no test framework detected:
 **For detected framework:**
 - Node.js: Run `npm list --depth=0 2>/dev/null | grep -E "jest|mocha|chai|jasmine"`
 - Python: Run `pip list 2>/dev/null | grep -E "pytest|unittest|nose"`
+- PHP: Run `composer show 2>/dev/null | grep -E "phpunit|pestphp"`
+- Java (Maven): Run `mvn dependency:list 2>/dev/null | grep -E "junit|testng"`
+- Java (Gradle): Run `./gradlew dependencies --configuration testImplementation 2>/dev/null | grep -E "junit|testng"`
+- C#/.NET: Run `dotnet list package 2>/dev/null | grep -E "Microsoft.NET.Test|NUnit|xunit"`
+- Ruby: Run `bundle list 2>/dev/null | grep -E "rspec|minitest"`
+- Dart/Flutter: Run `flutter pub deps 2>/dev/null | grep flutter_test`
 - Verify test dependencies are installed
 
 If dependencies missing:
 - Tell user: "❌ Test dependencies not installed"
-- Suggest: "Run: npm install (or pip install -r requirements.txt)"
+- Suggest installation commands:
+  - Node.js: "npm install" or "pnpm install"
+  - Python: "pip install -r requirements.txt" or "poetry install"
+  - PHP: "composer install"
+  - Java (Maven): "mvn clean install"
+  - Java (Gradle): "./gradlew build"
+  - C#/.NET: "dotnet restore"
+  - Ruby: "bundle install"
+  - Dart/Flutter: "flutter pub get"
+  - Swift: "swift package resolve"
+  - C/C++: "mkdir build && cd build && cmake .. && make"
 
 ## Instructions
 
@@ -125,6 +187,112 @@ options:
 environment: {}
 ```
 
+#### PHP (PHPUnit)
+```yaml
+framework: phpunit
+test_command: ./vendor/bin/phpunit
+test_directory: tests
+config_file: phpunit.xml
+options:
+  - --verbose
+  - --testdox
+environment:
+  APP_ENV: testing
+```
+
+#### C#/.NET
+```yaml
+framework: dotnet
+test_command: dotnet test
+test_directory: .
+config_file: *.sln
+options:
+  - --verbosity normal
+  - --logger console
+environment: {}
+```
+
+#### Java (Maven)
+```yaml
+framework: maven
+test_command: mvn test
+test_directory: src/test/java
+config_file: pom.xml
+options:
+  - -Dtest.verbose=true
+environment: {}
+```
+
+#### Java (Gradle)
+```yaml
+framework: gradle
+test_command: ./gradlew test
+test_directory: src/test/java
+config_file: build.gradle
+options:
+  - --info
+  - --continue
+environment: {}
+```
+
+#### Kotlin
+```yaml
+framework: kotlin
+test_command: ./gradlew test
+test_directory: src/test/kotlin
+config_file: build.gradle.kts
+options:
+  - --info
+environment: {}
+```
+
+#### Swift
+```yaml
+framework: swift
+test_command: swift test
+test_directory: Tests
+config_file: Package.swift
+options:
+  - --verbose
+environment: {}
+```
+
+#### Dart/Flutter
+```yaml
+framework: flutter
+test_command: flutter test
+test_directory: test
+config_file: pubspec.yaml
+options:
+  - --verbose
+environment: {}
+```
+
+#### C/C++ (CMake)
+```yaml
+framework: cmake
+test_command: ctest
+test_directory: build
+config_file: CMakeLists.txt
+options:
+  - --verbose
+  - --output-on-failure
+environment: {}
+```
+
+#### Ruby (RSpec)
+```yaml
+framework: rspec
+test_command: bundle exec rspec
+test_directory: spec
+config_file: .rspec
+options:
+  - --format documentation
+  - --color
+environment:
+  RAILS_ENV: test
+```
+
 ### 2. Test Discovery
 
 Scan for test files:
@@ -134,8 +302,40 @@ Scan for test files:
 - Check for test fixtures or data
 
 ```bash
-# Example for Node.js
-find . -path "*/node_modules" -prune -o -name "*.test.js" -o -name "*.spec.js" | wc -l
+# Examples by language:
+
+# JavaScript/TypeScript
+find . -path "*/node_modules" -prune -o -name "*.test.js" -o -name "*.spec.js" -o -name "*.test.ts" -o -name "*.spec.ts" | wc -l
+
+# Python
+find . -name "test_*.py" -o -name "*_test.py" -o -path "*/tests/*.py" | wc -l
+
+# PHP
+find . -path "*/tests/*" -name "*.php" -o -name "*Test.php" | wc -l
+
+# Java/Kotlin
+find . -path "*/src/test/*" -name "*Test.java" -o -name "*Test.kt" | wc -l
+
+# C#/.NET
+find . -name "*Test.cs" -o -name "*Tests.cs" | wc -l
+
+# Swift
+find . -name "*Test.swift" -o -name "*Tests.swift" | wc -l
+
+# Dart/Flutter
+find . -name "*_test.dart" | wc -l
+
+# C/C++
+find . -name "*test.cpp" -o -name "*test.c" -o -name "test_*.cpp" | wc -l
+
+# Ruby
+find . -name "*_spec.rb" -o -name "*_test.rb" | wc -l
+
+# Go
+find . -name "*_test.go" | wc -l
+
+# Rust
+find . -name "*.rs" -exec grep -l "#\[cfg(test)\]" {} \; | wc -l
 ```
 
 ### 3. Create Test Runner Configuration
@@ -268,7 +468,14 @@ After configuration:
 
 **Missing Dependencies:**
 - Message: "❌ Test framework not installed"
-- Solution: "Install dependencies first: npm install / pip install -r requirements.txt"
+- Solution: "Install dependencies first based on project type:"
+  - Node.js: "npm install" or "pnpm install"
+  - Python: "pip install -r requirements.txt" or "poetry install"
+  - PHP: "composer install"
+  - Java: "mvn clean install" or "./gradlew build"
+  - C#/.NET: "dotnet restore"
+  - Ruby: "bundle install"
+  - Dart/Flutter: "flutter pub get"
 
 **No Test Files:**
 - Message: "⚠️ No test files found"
