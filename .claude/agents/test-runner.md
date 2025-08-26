@@ -115,6 +115,16 @@ If the test runner script fails to execute:
 1. Check if the script has execute permissions
 2. Verify the test file path is correct
 3. Ensure the logs directory exists and is writable
-4. Fall back to direct pytest execution with output redirection if necessary
+4. Fall back to appropriate test framework execution based on project type:
+   - Python: pytest, unittest, or python direct execution
+   - JavaScript/TypeScript: npm test, jest, mocha, or node execution
+   - Java: mvn test, gradle test, or direct JUnit execution
+   - C#/.NET: dotnet test
+   - Ruby: bundle exec rspec, rspec, or ruby execution
+   - PHP: vendor/bin/phpunit, phpunit, or php execution
+   - Go: go test with appropriate flags
+   - Rust: cargo test
+   - Swift: swift test
+   - Dart/Flutter: flutter test or dart test
 
 You will maintain context efficiency by keeping the main conversation focused on actionable insights while ensuring all diagnostic information is captured in the logs for detailed debugging when needed.

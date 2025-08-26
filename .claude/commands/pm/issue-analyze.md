@@ -112,7 +112,8 @@ parallelization_factor: {1.0-5.0}
 ### Shared Files
 {List any files multiple streams need to modify}:
 - `src/types/index.ts` - Streams A & B (coordinate type updates)
-- `package.json` - Stream B (add dependencies)
+- Project configuration files (package.json, pom.xml, Cargo.toml, etc.) - Stream B (add dependencies)
+- Build configuration files (build.gradle, CMakeLists.txt, etc.) - Stream C (build system changes)
 
 ### Sequential Requirements
 {List what must happen in order}:

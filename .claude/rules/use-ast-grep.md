@@ -43,7 +43,42 @@ ast-grep --pattern '$PATTERN' --lang $LANGUAGE $PATH
 
 ## Supported Languages
 
-- javascript, typescript, ruby, python, go, rust, java, c, cpp, html, css, yaml, json, and more
+**Primary Languages:**
+- **JavaScript/TypeScript**: `javascript`, `typescript`, `jsx`, `tsx`
+- **Python**: `python`
+- **Java/Kotlin**: `java`, `kotlin`
+- **C/C++**: `c`, `cpp`, `c++`
+- **C#**: `csharp`, `cs`
+- **Go**: `go`
+- **Rust**: `rust`
+- **Ruby**: `ruby`
+- **PHP**: `php`
+- **Swift**: `swift`
+- **Dart**: `dart`
+
+**Web & Markup:**
+- **HTML**: `html`
+- **CSS**: `css`, `scss`, `sass`, `less`
+- **Vue**: `vue`
+- **Svelte**: `svelte`
+
+**Configuration & Data:**
+- **YAML**: `yaml`, `yml`
+- **JSON**: `json`
+- **TOML**: `toml`
+- **XML**: `xml`
+
+**Shell & Scripts:**
+- **Bash**: `bash`, `sh`
+- **PowerShell**: `powershell`
+
+**Others:**
+- **Lua**: `lua`
+- **Elixir**: `elixir`
+- **Scala**: `scala`
+- **Haskell**: `haskell`
+- **OCaml**: `ocaml`
+- **And many more** - ast-grep supports 50+ languages
 
 ## Integration Workflow
 
