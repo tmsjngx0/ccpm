@@ -382,14 +382,27 @@ Teams using this system report:
 
 ### Quick Setup (2 minutes)
 
-1. **Clone this repository into your project**:
+1. **Install this repository into your project**:
+
+   #### Unix/Linux/macOS
+
    ```bash
    cd path/to/your/project/
-   git clone https://github.com/automazeio/ccpm.git .
+   curl -sSL https://raw.githubusercontent.com/automazeio/ccpm/main/ccpm.sh | bash
+   # or: wget -qO- https://raw.githubusercontent.com/automazeio/ccpm/main/ccpm.sh | bash
+   ```
+
+   #### Windows (PowerShell)
+   ```bash
+   cd path/to/your/project/
+   iwr -useb https://raw.githubusercontent.com/automazeio/ccpm/main/ccpm.bat | iex
    ```
    > ⚠️ **IMPORTANT**: If you already have a `.claude` directory, clone this repository to a different directory and copy the contents of the cloned `.claude` directory to your project's `.claude` directory.
 
-2. **Initialize the PM system**:
+   See full/other installation options in the [installation guide ›](https://github.com/automazeio/ccpm/tree/main/install)
+
+
+3. **Initialize the PM system**:
    ```bash
    /pm:init
    ```
@@ -400,13 +413,13 @@ Teams using this system report:
    - Create required directories
    - Update .gitignore
 
-3. **Create `CLAUDE.md`** with your repository information
+4. **Create `CLAUDE.md`** with your repository information
    ```bash
    /init include rules from .claude/CLAUDE.md
    ```
    > If you already have a `CLAUDE.md` file, run: `/re-init` to update it with important rules from `.claude/CLAUDE.md`.
 
-4. **Prime the system**:
+5. **Prime the system**:
    ```bash
    /context:create
    ```
