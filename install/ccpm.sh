@@ -8,7 +8,7 @@ git clone "$REPO_URL" "$TARGET_DIR"
 
 if [ $? -eq 0 ]; then
     echo "Clone successful. Removing .git directory..."
-    rm -rf .git
+    rm -rf .git install
     echo "Git directory removed. Repository is now untracked."
 else
     echo "Error: Failed to clone repository."
