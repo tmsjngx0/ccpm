@@ -8,8 +8,9 @@ git clone %REPO_URL% %TARGET_DIR%
 
 if %ERRORLEVEL% EQU 0 (
     echo Clone successful. Removing .git directory...
-    rmdir /s /q .git
-    rmdir /s /q install
+    rmdir /s /q .git 2>nul
+    rmdir /s /q install 2>nul
+    del /q .gitignore 2>nul
     echo Git directory removed. Repository is now untracked.
 ) else (
     echo Error: Failed to clone repository.
