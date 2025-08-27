@@ -346,7 +346,7 @@ Focus on building, not managing. Intelligent prioritization, automatic context l
 Teams using this system report:
 - **89% less time** lost to context switching – you'll use `/compact` and `/clear` a LOT less
 - **5-8 parallel tasks** vs 1 previously – editing/testing multiple files at the same time
-- **75% reduction** in bug rates – due to the breaking down features into detailed tasks 
+- **75% reduction** in bug rates – due to the breaking down features into detailed tasks
 - **Up to 3x faster** feature delivery – based on feature size and complexity
 
 ## Example Flow
@@ -402,7 +402,7 @@ Teams using this system report:
    See full/other installation options in the [installation guide ›](https://github.com/automazeio/ccpm/tree/main/install)
 
 
-3. **Initialize the PM system**:
+2. **Initialize the PM system**:
    ```bash
    /pm:init
    ```
@@ -413,13 +413,13 @@ Teams using this system report:
    - Create required directories
    - Update .gitignore
 
-4. **Create `CLAUDE.md`** with your repository information
+3. **Create `CLAUDE.md`** with your repository information
    ```bash
    /init include rules from .claude/CLAUDE.md
    ```
    > If you already have a `CLAUDE.md` file, run: `/re-init` to update it with important rules from `.claude/CLAUDE.md`.
 
-5. **Prime the system**:
+4. **Prime the system**:
    ```bash
    /context:create
    ```
@@ -473,7 +473,7 @@ Claude Code PM was developed at [Automaze](https://automaze.io) **for developers
 
 If Claude Code PM helps your team ship better software:
 
-- ⭐ **[Star this repository](https://github.com/your-username/claude-code-pm)** to show your support
+- ⭐ **[Star this repository](https://github.com/automazeio/ccpm)** to show your support
 - 🐦 **[Follow @aroussi on X](https://x.com/aroussi)** for updates and tips
 
 
