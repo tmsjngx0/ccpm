@@ -482,3 +482,9 @@ If Claude Code PM helps your team ship better software:
 > [!TIP]
 > **Ship faster with Automaze.** We partner with founders to bring their vision to life, scale their business, and optimize for success.
 > **[Visit Automaze to book a call with me ›](https://automaze.io)**
+
+---
+
+## Star History
+
+![Star History Chart](https://api.star-history.com/svg?repos=automazeio/ccpm)
