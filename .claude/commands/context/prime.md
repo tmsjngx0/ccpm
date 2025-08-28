@@ -76,7 +76,7 @@ After loading context files:
 
 **If critical files are missing:**
 - `project-overview.md` missing: Try to understand from README.md
-- `tech-context.md` missing: Analyze package.json/requirements.txt directly
+- `tech-context.md` missing: Analyze project configuration files directly (package.json, requirements.txt, pyproject.toml, composer.json, Gemfile, Cargo.toml, go.mod, pom.xml, build.gradle, build.gradle.kts, *.sln, *.csproj, Package.swift, pubspec.yaml, CMakeLists.txt, etc.)
 - `progress.md` missing: Check recent git commits for status
 
 **If context is incomplete:**

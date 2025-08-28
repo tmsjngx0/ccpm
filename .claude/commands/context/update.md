@@ -39,8 +39,17 @@ Gather information about what has changed:
 
 **Dependency Changes:**
 - Node.js: `git diff HEAD~5..HEAD package.json 2>/dev/null`
-- Python: `git diff HEAD~5..HEAD requirements.txt 2>/dev/null`
-- Check if new dependencies were added or versions changed
+- Python: `git diff HEAD~5..HEAD requirements.txt pyproject.toml 2>/dev/null`
+- Java: `git diff HEAD~5..HEAD pom.xml build.gradle build.gradle.kts 2>/dev/null`
+- C#/.NET: `git diff HEAD~5..HEAD *.sln *.csproj 2>/dev/null`
+- Ruby: `git diff HEAD~5..HEAD Gemfile Gemfile.lock 2>/dev/null`
+- Rust: `git diff HEAD~5..HEAD Cargo.toml Cargo.lock 2>/dev/null`
+- Go: `git diff HEAD~5..HEAD go.mod go.sum 2>/dev/null`
+- PHP: `git diff HEAD~5..HEAD composer.json composer.lock 2>/dev/null`
+- Dart/Flutter: `git diff HEAD~5..HEAD pubspec.yaml pubspec.lock 2>/dev/null`
+- Swift: `git diff HEAD~5..HEAD Package.swift Package.resolved 2>/dev/null`
+- C/C++: `git diff HEAD~5..HEAD CMakeLists.txt 2>/dev/null`
+- Check if new dependencies were added or versions changed across any build system
 
 ### 3. Get Current DateTime
 - Run: `date -u +"%Y-%m-%dT%H:%M:%SZ"`
@@ -206,7 +215,7 @@ Use these commands to detect changes:
 - Branch info: `git branch --show-current`
 - Uncommitted changes: `git diff --stat`
 - New untracked files: `git ls-files --others --exclude-standard | head -10`
-- Dependency changes: Check package.json, requirements.txt, etc.
+- Dependency changes: Check package.json, requirements.txt, pyproject.toml, composer.json, Gemfile, Cargo.toml, go.mod, pom.xml, build.gradle, build.gradle.kts, *.sln, *.csproj, Package.swift, pubspec.yaml, CMakeLists.txt, etc.
 
 ## Important Notes
 

@@ -20,17 +20,17 @@ ast-grep --pattern '$PATTERN' --lang $LANGUAGE $PATH
 ### Common Use Cases
 
 - **Find function calls:**
-  `ast-grep --pattern 'functionName($$$)' --lang javascript .`
+  `ast-grep --pattern 'functionName($$$)' --lang js .`
 - **Find class definitions:**
-  `ast-grep --pattern 'class $NAME { $$$ }' --lang typescript .`
+  `ast-grep --pattern 'class $NAME { $$$ }' --lang ts .`
 - **Find variable assignments:**
   `ast-grep --pattern '$VAR = $$$' --lang ruby .`
 - **Find import statements:**
-  `ast-grep --pattern 'import { $$$ } from "$MODULE"' --lang javascript .`
+  `ast-grep --pattern 'import { $$$ } from "$MODULE"' --lang js .`
 - **Find method calls on objects:**
-  `ast-grep --pattern '$OBJ.$METHOD($$$)' --lang typescript .`
+  `ast-grep --pattern '$OBJ.$METHOD($$$)' --lang ts .`
 - **Find React hooks:**
-  `ast-grep --pattern 'const [$STATE, $SETTER] = useState($$$)' --lang typescript .`
+  `ast-grep --pattern 'const [$STATE, $SETTER] = useState($$$)' --lang tsx .`
 - **Find Ruby class definitions:**
   `ast-grep --pattern 'class $NAME < $$$; $$$; end' --lang ruby .`
 
@@ -43,7 +43,44 @@ ast-grep --pattern '$PATTERN' --lang $LANGUAGE $PATH
 
 ## Supported Languages
 
-- javascript, typescript, ruby, python, go, rust, java, c, cpp, html, css, yaml, json, and more
+**Complete list of ast-grep supported languages** (25 total):
+
+**System Programming:**
+- **C**: `c`
+- **C++**: `cpp`
+- **C#**: `csharp`
+- **Go**: `go`
+- **Rust**: `rust`
+
+**Web Development:**
+- **JavaScript**: `javascript` (aliases: `js`, `jsx`)
+- **TypeScript**: `typescript` (aliases: `ts`)
+- **TSX**: `tsx`
+- **HTML**: `html`
+- **CSS**: `css`
+- **PHP**: `php`
+
+**General Purpose:**
+- **Python**: `python`
+- **Java**: `java`
+- **Kotlin**: `kotlin`
+- **Ruby**: `ruby`
+- **Swift**: `swift`
+- **Scala**: `scala`
+- **Lua**: `lua`
+- **Elixir**: `elixir`
+- **Haskell**: `haskell`
+
+**Configuration & Data:**
+- **JSON**: `json`
+- **YAML**: `yaml`
+
+**Other:**
+- **Bash**: `bash`
+- **Nix**: `nix`
+- **Solidity**: `solidity`
+
+> **Note**: Language aliases (like `js` for `javascript`) and file extension mappings can be customized using the `languageGlobs` configuration.
 
 ## Integration Workflow
 
