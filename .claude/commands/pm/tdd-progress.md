@@ -39,6 +39,8 @@ Track these TDD metrics:
 - **Current Phase**: Where the work stopped
 - **Test Ratio**: Tests written vs code written
 - **Time in Phase**: How long in current phase
+- **Assumptions Made**: Count of COMPLETION_DRIVE tags
+- **Assumptions Verified**: How many were checked and resolved
 - **Blockers**: Any noted TDD blockers
 
 ### 4. Display Progress
@@ -54,8 +56,9 @@ Format output as:
    Cycles: 8 completed, 1 in progress
    Tests: 24 passing, 0 failing
    Coverage: 87%
+   Assumptions: 3 made, 2 verified ⚠️
    Last Activity: 2 hours ago
-   Next: Refactor validation logic
+   Next: Verify assumptions, then refactor validation logic
 
 📋 Issue #1235: API Endpoints  
    Status: 🔴 Red Phase (1/3 tasks complete)

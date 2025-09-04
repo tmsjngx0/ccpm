@@ -93,8 +93,9 @@ For each uncompleted task or subtask:
 
 #### GREEN Phase - Make Test Pass
 1. Write the minimum code needed to make the test pass
-2. Run test to confirm it passes
-3. Log the green phase:
+2. Mark any assumptions with `# COMPLETION_DRIVE: assumption details`
+3. Run test to confirm it passes
+4. Log the green phase:
 
 ```markdown
 ### {timestamp} - TDD Green Phase  
@@ -106,11 +107,15 @@ For each uncompleted task or subtask:
 **Next**: {refactor_if_needed_or_next_test}
 ```
 
-#### REFACTOR Phase - Improve Code (if needed)
-1. Only refactor when all tests are green
-2. Make one refactoring change at a time
-3. Run tests after each change
-4. Log refactoring:
+#### VERIFY & REFACTOR Phase
+1. First verify any COMPLETION_DRIVE assumptions:
+   - Run `grep -n "COMPLETION_DRIVE:" {files}`
+   - Check each assumption
+   - Fix if incorrect, remove tag if correct
+2. Then refactor when all tests are green
+3. Make one refactoring change at a time
+4. Run tests after each change
+5. Log refactoring:
 
 ```markdown
 ### {timestamp} - TDD Refactor Phase

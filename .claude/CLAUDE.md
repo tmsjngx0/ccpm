@@ -21,6 +21,8 @@ When working on issues from the PM system, follow Test-Driven Development method
 - Commit after each phase (test, implementation, refactor)
 - Log all TDD phases in the Implementation Log
 - Keep commits atomic and descriptive
+- Use `# COMPLETION_DRIVE: details` to mark assumptions when uncertain
+- Verify all assumptions before completing refactor phase
 
 ## USE SUB-AGENTS FOR CONTEXT OPTIMIZATION
 

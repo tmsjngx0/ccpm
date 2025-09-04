@@ -380,7 +380,13 @@ Teams using this system report:
 
 ## Get Started Now
 
-### Quick Setup (2 minutes)
+### For New Projects (2 minutes)
+
+### For Existing Projects 
+
+See [MIGRATION.md](MIGRATION.md) for detailed instructions on migrating existing projects with GitHub issues to Claude Code PM.
+
+### Quick Setup
 
 1. **Install this repository into your project**:
 

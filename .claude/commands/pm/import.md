@@ -8,13 +8,17 @@ Import existing GitHub issues into the PM system.
 
 ## Usage
 ```
-/pm:import [--epic <epic_name>] [--label <label>]
+/pm:import [options] [issue_numbers...]
 ```
 
 Options:
-- `--epic` - Import into specific epic
-- `--label` - Import only issues with specific label
-- No args - Import all untracked issues
+- `--all` - Import all open issues
+- `--epic <name>` - Import into specific epic
+- `--label <label>` - Import only issues with specific label
+- `--milestone <name>` - Import all issues from milestone
+- `--state <state>` - Import issues with state (open/closed/all)
+- `--dry-run` - Show what would be imported without doing it
+- Issue numbers - Import specific issues (e.g., 123 456 789)
 
 ## Instructions
 
