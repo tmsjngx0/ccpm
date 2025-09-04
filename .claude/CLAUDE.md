@@ -2,6 +2,26 @@
 
 > Think carefully and implement the most concise solution that changes as little code as possible.
 
+## TEST-DRIVEN DEVELOPMENT INTEGRATION
+
+When working on issues from the PM system, follow Test-Driven Development methodology:
+
+### Quick Start
+- Use `/pm:tdd` to work on issues with TDD methodology
+- Use `/pm:tdd <issue_number>` for a specific issue  
+- When user says "go" or "tdd", find next WIP issue and apply TDD
+
+### TDD Workflow
+1. **Red Phase**: Write a failing test that defines expected behavior
+2. **Green Phase**: Write minimal code to make the test pass
+3. **Refactor Phase**: Improve code structure while keeping tests green
+
+### Key Rules
+- Never write code without a failing test first
+- Commit after each phase (test, implementation, refactor)
+- Log all TDD phases in the Implementation Log
+- Keep commits atomic and descriptive
+
 ## USE SUB-AGENTS FOR CONTEXT OPTIMIZATION
 
 ### 1. Always use the file-analyzer sub-agent when asked to read files.

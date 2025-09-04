@@ -33,9 +33,10 @@ Task:
     Instructions:
     1. Implement ONLY your assigned scope
     2. Work ONLY on your assigned files
-    3. Commit frequently with format: "Issue #{number}: {specific change}"
-    4. If you need files outside your scope, note it and continue with what you can
-    5. Test your changes if applicable
+    3. Follow TDD methodology: Write test first, then code, then refactor
+    4. Commit frequently with format: "Issue #{number}: {specific change}"
+    5. If you need files outside your scope, note it and continue with what you can
+    6. Test your changes using the test-runner agent when appropriate
 
     Return ONLY:
     - What you completed (bullet list)

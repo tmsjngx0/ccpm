@@ -101,6 +101,12 @@ Task:
   prompt: |
     You are working on Issue #$ARGUMENTS in the epic worktree.
     
+    IMPORTANT: Follow Test-Driven Development (TDD) methodology:
+    1. Write failing tests first (Red phase)
+    2. Implement minimal code to pass (Green phase)  
+    3. Refactor when all tests are green (Refactor phase)
+    4. Commit after each phase with descriptive messages
+    
     Worktree location: ../epic-{epic_name}/
     Your stream: {stream_name}
     
